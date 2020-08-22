@@ -11,25 +11,37 @@ using Sufrati.Data.Configurations;
 
 namespace Sufrati.Data
 {
-    class SufratiContext : DbContext
+    public class SufratiContext : DbContext
     {
         private IHttpContextAccessor httpContextAccessor;
 
         //  public virtual DbSet<GeneralLookupType> GeneralLookupType { get; set; }
         public virtual DbSet<AuditLog> AuditLog { get; set; }
+        public virtual DbSet<GeneralLookupType> GeneralLookupType { get; set; }
+        public virtual DbSet<GeneralLookupValue> GeneralLookupValue { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<PasswordPolicy> PasswordPolicy { get; set; }
+        public virtual DbSet<Groups> Groups { get; set; }
+        public virtual DbSet<UserGroup> UserGroup { get; set; }
 
         public SufratiContext(DbContextOptions<SufratiContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
             this.ChangeTracker.LazyLoadingEnabled = false;
             this.httpContextAccessor = httpContextAccessor;
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //new EntityCLassConfiguration(modelBuilder.Entity<EntityCLass>());
+            new PasswordPolicyConfiguration(modelBuilder.Entity<PasswordPolicy>());
+            new UserConfiguration(modelBuilder.Entity<User>());
+            new UserGroupConfiguration(modelBuilder.Entity<UserGroup>());
+            new GeneralLookupTypeConfiguration(modelBuilder.Entity<GeneralLookupType>());
+            new GeneralLookupValueConfiguration(modelBuilder.Entity<GeneralLookupValue>());
+            new GroupConfiguration(modelBuilder.Entity<Groups>());
             new AuditLogConfiguration(modelBuilder.Entity<AuditLog>());
+        }//new GeneralLookupTypeConfiguration(modelBuilder.Entity<GeneralLookupType>());
 
-            //new GeneralLookupTypeConfiguration(modelBuilder.Entity<GeneralLookupType>());
-        }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var modifiedEntities = this.ChangeTracker.Entries().Where(p => p.State == EntityState.Modified).ToList();
