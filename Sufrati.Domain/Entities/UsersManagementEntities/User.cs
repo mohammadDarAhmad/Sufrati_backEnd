@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,13 +30,14 @@ namespace Sufrati.Domain.Entities
 
     public class User : BaseEntity
     {
-        
+
         [Required]
         [MaxLength(100)]
         public string LoginName { get; set; }
 
         [Required]
         [MaxLength(100)]
+        [JsonIgnore]
         public string Password { get; set; }
 
         [Required]
@@ -43,7 +45,7 @@ namespace Sufrati.Domain.Entities
         public string NameAr { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [Column(TypeName = "varchar(200)")]
         public string NameEn { get; set; }
 
         [ForeignKey("GeneralLookupValueID")]
@@ -51,7 +53,7 @@ namespace Sufrati.Domain.Entities
         public long UserTypeID { get; set; }
 
         [Required]
-        [Column(TypeName ="varchar(100)")]
+        [Column(TypeName = "varchar(100)")]
         public string Email { get; set; }
 
         [Column(TypeName = "varchar(100)")]
@@ -67,19 +69,21 @@ namespace Sufrati.Domain.Entities
 
         [Required]
         public bool IsActive { get; set; }
-        
+
+        public bool PasswordActive { get; set; }
+
         [Required]
         [ForeignKey("PasswordPolicyID")]
         public long PasswordPolicyID { get; set; }
 
-        public string UserImageOriginal { get; set; }
-        public string UserImageSmall { get; set; }
+        public long? UserImageID { get; set; }
+        public long NumberOfWrongLogin { get; set; }
 
 
         public virtual GeneralLookupValue UserType { get; set; }
         public virtual PasswordPolicy PasswordPolicy { get; set; }
         public virtual List<UserGroup> UserGroups { get; set; }
-
+        public virtual Attachment Attachment { get; set; }
 
 
     }

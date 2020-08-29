@@ -11,6 +11,8 @@ namespace Sufrati.Data.Configurations
         public GroupConfiguration(EntityTypeBuilder<Groups> entity)
         {
             entity.HasIndex(e => e.ID).IsUnique();
+            entity.HasIndex(e => e.NameEn).IsUnique();
+            entity.HasIndex(e => e.NameAr).IsUnique();
             entity.HasMany(e => e.UserGroups);
 
             entity.HasData(
@@ -22,7 +24,7 @@ namespace Sufrati.Data.Configurations
                     DescriptionAr = "هذه المجموعة للمسؤولين الرئيسين",
                     DescriptionEn = "this group for Admins",
                     CreatedByID = 101000000000001,
-                    Created_Date = DateTime.Now,
+                    CreatedDate = DateTime.Now,
                     LastModifiedByID = 101000000000001,
                     LastModifiedDate = DateTime.Now,
                     IPAddress = "127.0.0.1"

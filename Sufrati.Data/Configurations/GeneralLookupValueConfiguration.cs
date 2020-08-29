@@ -14,19 +14,20 @@ namespace Sufrati.Data.Configurations
             entity.HasOne(e => e.GeneralLookupType).WithMany(e => e.GeneralLookupValues).HasForeignKey(e => e.GeneralLookupTypeID);
 
             entity.Property(e => e.ValueAr).IsRequired();
+
             entity.HasData(
-                     new GeneralLookupValue()
-                     {
-                         ID = 106000000000001,
-                         GeneralLookupTypeID = 105000000000001,
-                         ValueAr = "آدمن رئيسي",
-                         ValueEn = "admin",
-                         CreatedByID = 101000000000001,
-                         Created_Date = DateTime.Now,
-                         LastModifiedByID = 101000000000001,
-                         LastModifiedDate = DateTime.Now,
-                         IPAddress = "127.0.0.1"
-                     }
+                  new GeneralLookupValue()
+                  {
+                      ID = 106000000000001,
+                      GeneralLookupTypeID = 105000000000001,
+                      ValueAr = "آدمن رئيسي",
+                      ValueEn = "admin",
+                      CreatedByID = 101000000000001,
+                      CreatedDate = DateTime.Now,
+                      LastModifiedByID = 101000000000001,
+                      LastModifiedDate = DateTime.Now,
+                      IPAddress = "127.0.0.1"
+                  }
                     );
         }
     }

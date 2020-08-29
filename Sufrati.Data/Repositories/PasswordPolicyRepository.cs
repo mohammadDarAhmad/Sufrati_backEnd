@@ -53,13 +53,14 @@ namespace Sufrati.Data.Repositories
             return await _context.PasswordPolicy.ToListAsync(ct);
         }
 
-        public async Task<bool> UpdatePasswordPolicy(PasswordPolicy PasswordPolicy, IHttpContextAccessor accessor, CancellationToken ct = default)
+        public async Task<bool> UpdatePasswordPolicy(PasswordPolicy PasswordPolicy, CancellationToken ct = default)
         {
-            var update = _context.PasswordPolicy.Update(PasswordPolicy);
-            update.Property(e => e.CreatedByID).IsModified = false;
-            update.Property(e => e.Created_Date).IsModified = false;
-            await _context.SaveChangesAsync(ct);
+            var update = await _context.PasswordPolicy.FirstAsync(g => g.ID == PasswordPolicy.ID);
+            PasswordPolicy.CreatedByID = update.CreatedByID;
+            PasswordPolicy.CreatedDate = update.CreatedDate;
 
+            _context.Entry(update).CurrentValues.SetValues(PasswordPolicy);
+            await _context.SaveChangesAsync();
             return true;
         }
     }

@@ -16,7 +16,7 @@ namespace Sufrati.Domain.Entities
         public long? CreatedByID { get; set; }
 
         [Required]
-        public DateTime Created_Date { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public long? LastModifiedByID { get; set; }
 

@@ -13,7 +13,6 @@ namespace Sufrati.Data
     {
         public static async Task<BaseVM> GenerateInfoModel(BaseEntity baseEntity, SufratiContext context)
         {
-
             var userInfo = await context.User.Where(u => u.ID == baseEntity.CreatedByID || u.ID == baseEntity.LastModifiedByID).ToListAsync();
 
             BaseVM infoVM = new BaseVM();
@@ -32,12 +31,14 @@ namespace Sufrati.Data
                 infoVM.LastModifiedByNameAr = modified.NameAr;
                 infoVM.LastModifiedByNameEn = modified.NameEn;
             }
-
-            infoVM.Created_Date = baseEntity.Created_Date;
-            infoVM.LastModifiedDate = baseEntity.LastModifiedDate;
+            infoVM.ID = baseEntity.ID;
+            infoVM.CreatedDate = (DateTime)baseEntity.CreatedDate;
+            infoVM.LastModifiedDate = (DateTime)baseEntity.LastModifiedDate;
             infoVM.IPAddress = baseEntity.IPAddress;
 
             return infoVM;
         }
+
+
     }
 }

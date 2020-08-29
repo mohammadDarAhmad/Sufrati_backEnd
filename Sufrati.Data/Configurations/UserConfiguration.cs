@@ -40,52 +40,50 @@ namespace Sufrati.Data.Configurations
             entity.HasMany(e => e.UserGroups);
 
             entity.HasData(
-                new User()
-                {
-                    ID = 101000000000001,
-                    LoginName = "Ali",
-                    Password = "536re62er6r",
-                    NameAr = "علي",
-                    NameEn = "Ali P",
-                    UserTypeID = 106000000000001,
-                    Email = "Ali@Gmail.com",
-                    HomePhone = "",
-                    Mobile = "",
-                    Address = "",
-                    Notes = "",
-                    IsActive = true,
-                    PasswordPolicyID = 148000000000001,
-                    UserImageOriginal = "localhost://",
-                    UserImageSmall = "localhost://",
-                    CreatedByID = null,
-                    Created_Date = DateTime.Now,
-                    LastModifiedByID = null,
-                    LastModifiedDate = DateTime.Now,
-                    IPAddress = "127.0.0.1"
-                },
-                  new User()
-                  {
-                      ID = 101000000000002,
-                      LoginName = "Ahmad",
-                      Password = "536re62er6r",
-                      NameAr = "احمد",
-                      NameEn = "Ahmad P",
-                      UserTypeID = 106000000000001,
-                      Email = "Ahmad@Gmail.com",
-                      HomePhone = "",
-                      Mobile = "",
-                      Address = "",
-                      Notes = "",
-                      IsActive = true,
-                      PasswordPolicyID = 148000000000001,
-                      UserImageOriginal = "localshost://",
-                      UserImageSmall = "localhost://",
-                      CreatedByID = 1,
-                      Created_Date = DateTime.Now,
-                      LastModifiedByID = 1,
-                      LastModifiedDate = DateTime.Now,
-                      IPAddress = "127.0.0.1"
-                  }
+                    new User()
+                    {
+                        ID = 101000000000001,
+                        LoginName = "Admin",
+                        Password = "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=",//"123@@@aaa"
+                        NameAr = "مسؤول النظام",
+                        NameEn = "Admin",
+                        UserTypeID = 106000000000001,//106000000000011,
+                        Email = "Admin@Gmail.com",
+                        HomePhone = "022965472",
+                        Mobile = "0599999999",
+                        Address = "Ramallah",
+                        Notes = "Admin User of the system",
+                        IsActive = true,
+                        PasswordPolicyID = 148000000000001,
+                        NumberOfWrongLogin = 0,
+                        CreatedByID = 101000000000001,
+                        CreatedDate = DateTime.Now,
+                        LastModifiedByID = 101000000000001,
+                        LastModifiedDate = DateTime.Now,
+                        IPAddress = "127.0.0.1"
+                    },
+                 new User()
+                 {
+                     ID = 101000000000002,
+                     LoginName = "Ala",
+                     Password = "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=",//"123@@@aaa"
+                     NameAr = "علاء",
+                     NameEn = "Ala",
+                     UserTypeID = 106000000000001,
+                     Email = "Ala@Gmail.com",
+                     HomePhone = "022965472",
+                     Mobile = "0599999999",
+                     Address = "Ramallah",
+                     Notes = "Admin User of the system",
+                     IsActive = true,
+                     PasswordPolicyID = 148000000000001,
+                     NumberOfWrongLogin = 0,
+                     CreatedByID = 101000000000001,
+                     CreatedDate = DateTime.Now,
+                     LastModifiedByID = 101000000000001,
+                     LastModifiedDate = DateTime.Now,
+                     IPAddress = "127.0.0.1"
+                 }
                 );
 
 

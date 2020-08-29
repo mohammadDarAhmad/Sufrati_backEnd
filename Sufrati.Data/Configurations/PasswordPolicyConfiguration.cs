@@ -12,24 +12,24 @@ namespace Sufrati.Data.Configurations
         {
             entity.HasIndex(e => new { e.ID }).IsUnique();
             entity.HasData(
-                new PasswordPolicy()
-                {
-                    ID = 148000000000001,
-                    TitleAr = "سياسة 1",
-                    TitleEn = "Policy 1",
-                    FirstLoginChangePassword = true,
-                    IncludeCharacter = true,
-                    IncludeNumeric = true,
-                    IncludeSpecialCharacter = true,
-                    MinLength = 6,
-                    SessionAfterEnd = 60,
-                    SuspendPasswordAfter = 5,
-                    CreatedByID = 101000000000001,
-                    Created_Date = DateTime.Now,
-                    LastModifiedByID = 101000000000001,
-                    LastModifiedDate = DateTime.Now,
-                    IPAddress = "127.0.0.1"
-                });
+                  new PasswordPolicy()
+                  {
+                      ID = 148000000000001,
+                      TitleAr = "سياسة 1",
+                      TitleEn = "Policy 1",
+                      FirstLoginChangePassword = true,
+                      IncludeCharacter = true,
+                      IncludeNumeric = true,
+                      IncludeSpecialCharacter = true,
+                      MinLength = 6,
+                      SessionAfterEnd = 60,
+                      SuspendPasswordAfter = 5,
+                      CreatedByID = 101000000000001,
+                      CreatedDate = DateTime.Now,
+                      LastModifiedByID = 101000000000001,
+                      LastModifiedDate = DateTime.Now,
+                      IPAddress = "127.0.0.1"
+                  });
         }
     }
 }

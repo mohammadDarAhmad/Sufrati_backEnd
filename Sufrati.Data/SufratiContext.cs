@@ -23,6 +23,14 @@ namespace Sufrati.Data
         public virtual DbSet<PasswordPolicy> PasswordPolicy { get; set; }
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<UserGroup> UserGroup { get; set; }
+        public virtual DbSet<SystemConstant> SystemConstant { get; set; }
+
+        #region Attachment
+        public DbSet<AttachmentType> AttachmentType { get; set; }
+        public DbSet<Attachment> Attachment { get; set; }
+        public DbSet<FileType> FileType { get; set; }
+        public DbSet<AttachmentTypeFileType> AttachmentTypeFileType { get; set; }
+        #endregion
 
         public SufratiContext(DbContextOptions<SufratiContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {

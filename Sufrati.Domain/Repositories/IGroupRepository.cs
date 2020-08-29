@@ -17,7 +17,10 @@ namespace Sufrati.Domain.Repositories
         Task<Groups> GetGroupById(long id, CancellationToken ct = default);
         Task<BaseVM> GetGroupInformation(long id, CancellationToken ct = default);
         Task<List<User>> GetUsers(CancellationToken ct = default);
-        Task<bool> UpdateGroup(Groups group, List<User> users, IHttpContextAccessor accessor, CancellationToken ct = default);
+        Task<bool> UpdateGroup(Groups group, CancellationToken ct = default);
         Task<bool> DeleteGroup(long id, CancellationToken ct = default);
+        Task<bool> RemoveUsersFromGroup(long id, List<long> usersId, CancellationToken ct = default);
+        Task<bool> AddUsersForGroup(List<UserGroup> userGroups, CancellationToken ct = default);
+
     }
 }

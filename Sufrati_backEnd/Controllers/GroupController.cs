@@ -49,6 +49,13 @@ namespace Sufrati_backEnd.API.Controllers
         {
             return Ok(await _SufratiSupervisor.GetGroupInformation(id, ct));
         }
+        // POST: api/Groups
+        [HttpPost("AddUsers/{id}")]
+        public async Task<IActionResult> AddUsers(long id, List<long> usersId, CancellationToken ct = default)
+        {
+            var newGroup = await _SufratiSupervisor.AddUsers(id, usersId, _accessor, User, ct);
+            return NoContent();
+        }
 
         // POST: api/Group
         [HttpPost]

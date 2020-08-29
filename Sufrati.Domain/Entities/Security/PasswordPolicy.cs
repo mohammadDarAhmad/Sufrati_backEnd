@@ -12,11 +12,11 @@ namespace Sufrati.Domain.Entities
         public bool FirstLoginChangePassword { get; set; }
 
         [Required]
-        [Column(TypeName ="nvarchar(1000)")]
+        [Column(TypeName = "nvarchar(1000)")]
         public string TitleAr { get; set; }
 
         [Required]
-        [Column(TypeName = "nvarchar(1000)")]
+        [Column(TypeName = "varchar(1000)")]
         public string TitleEn { get; set; }
 
         [Required]

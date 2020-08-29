@@ -12,15 +12,20 @@ namespace Sufrati.Domain.Supervisor
 {
     public interface ISufratiSupervisor
     {
+       
         #region User
         Task<UserVM> AddUser(UserVM userVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        Task<bool> ChangePassword(ChangePassVM changePassVM, IHttpContextAccessor accessor, ClaimsPrincipal User, CancellationToken ct = default);
+        Task<bool> ResetPassword(long userId, string newPassword, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         Task<GeneralUserVM> GetUsers(CancellationToken ct = default);
-        Task<UserVM> GetUserById(long id, CancellationToken ct = default);
+        Task<UserDetailsVM> GetUserById(long id, CancellationToken ct = default);
+        Task<PasswordPolicyVM> GetPolicy(long id, CancellationToken ct = default);
         Task<BaseVM> GetUserInformation(long id, CancellationToken ct = default);
-        Task<bool> UpdateUser(UserVM userVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        Task<bool> UpdateUser(UserForViewVM userVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         Task<bool> DeleteUser(long id, CancellationToken ct = default);
-        #endregion
-
+        Task AddAttachmentToUser(long attachmentID, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        Task AddAttachmentToUser(long userId, long attachmentID, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+#endregion
 
         #region PasswordPolicy
         Task<PasswordPolicyVM> AddPasswordPolicy(PasswordPolicyVM passwordPolicyVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
@@ -33,12 +38,14 @@ namespace Sufrati.Domain.Supervisor
         #endregion
 
         #region Group
+        Task<bool> AddUsers(long id, List<long> usersId, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         Task<GroupVM> AddGroup(GroupVM groupVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         Task<GeneralGroupVM> GetGroups(CancellationToken ct = default);
         Task<GroupVM> GetGroupById(long id, CancellationToken ct = default);
         Task<BaseVM> GetGroupInformation(long id, CancellationToken ct = default);
         Task<bool> UpdateGroup(GroupVM groupVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         Task<bool> DeleteGroup(long id, CancellationToken ct = default);
+        Task<bool> RemoveUsers(long id, List<long> usersId, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
 
         #endregion
 
@@ -50,6 +57,26 @@ namespace Sufrati.Domain.Supervisor
         Task DeleteGeneralLookupAsync(long id, CancellationToken ct);
         Task<BaseVM> GetLookupInformation(long id, CancellationToken ct = default);
         #endregion
-
+        #region Attachment
+        Task<BaseVM> GetFileTypeInformation(long id, CancellationToken ct = default);
+        Task<BaseVM> GetAttachmentTypeInformation(long id, CancellationToken ct = default);
+        Task<AttachmentVM> UploadAttachmentAsync(IFormFile file, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default(CancellationToken));
+        Task DeleteAttachmentAsync(long attachmentID, CancellationToken ct = default(CancellationToken));
+        Task<AttachmentModel> GetAttachmentByIDAsync(long attachmentID, CancellationToken ct = default(CancellationToken));
+        Task<List<FileTypeModel>> GetFileTypes(CancellationToken ct = default(CancellationToken));
+        Task<AttachmentTypeWithItsFilesModel> AddAttachment(AttachmentTypesWithFilesForPostModel input, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default(CancellationToken));
+        Task<AttachmentTypeWithItsFilesModel> UpdateAttachment(AttachmentTypesWithFilesForPostModel input, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default(CancellationToken));
+        Task<bool> DeleteAttachmentTypeByID(long id, CancellationToken ct = default(CancellationToken));
+        Task<List<AttachmentTypeWithItsFilesModel>> GetAttachmentTypes(CancellationToken ct = default(CancellationToken));
+        Task<AttachmentTypeWithItsFilesModel> GetAttachmentTypeByID(long id, CancellationToken ct = default(CancellationToken));
+        Task<FileTypeModel> UpdateFileType(FileTypeModel fileType, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default(CancellationToken));
+        Task<FileTypeModel> AddFileType(FileTypeModel fileType, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default(CancellationToken));
+        Task<bool> DeleteFileTypeByID(long id, CancellationToken ct = default(CancellationToken));
+        #endregion
+        #region SystemConstant
+        Task<SystemConstantGetVM> GetSystemConstant(CancellationToken ct = default);
+        Task<BaseVM> GetSystemConstantInformation(CancellationToken ct = default);
+        Task<bool> UpdateSystemConstant(SystemConstantVM systemConstantVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        #endregion
     }
 }

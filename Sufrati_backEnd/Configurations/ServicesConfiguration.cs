@@ -22,7 +22,12 @@ namespace Sufrati_backEnd.API.Configurations
             services.AddScoped<IPasswordPolicyRepository, PasswordPolicyRepository>();
             services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<ILookupRepository, LookupRepository>();
-
+            services.AddScoped<IAttachmentTypeFileTypeRepository, AttachmentTypeFileTypeRepository>();
+            services.AddScoped<IAttachmentTypeReository, AttachmentTypeReository>();
+            services.AddScoped<IAttachmentRepository, AttachmentRepository>();
+            services.AddScoped<IFileTypeRepository, FileTypeRepository>();
+            services.AddScoped<ISystemConstantRepository, SystemConstantRepository>();
+           // services.AddScoped<IFileTypeRepository, FileTypeRepository>();
 
             return services;
         }
@@ -52,6 +57,18 @@ namespace Sufrati_backEnd.API.Configurations
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyInnerVM>().ReverseMap();
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVMForView>().ReverseMap();
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVM>().ReverseMap();
+                cfg.CreateMap<Groups, GroupVMForView>().ReverseMap();
+                cfg.CreateMap<Groups, GeneralGroupVM>().ReverseMap();
+                cfg.CreateMap<Groups, GroupVM>().ReverseMap();
+                cfg.CreateMap<User, UserDetailsVM>().ReverseMap();
+                cfg.CreateMap<User, GeneralUserVM>().ReverseMap();
+                cfg.CreateMap<User, UserVMForView>().ReverseMap();
+                cfg.CreateMap<User, UserInnerVM>().ReverseMap();
+                cfg.CreateMap<User, UserVM>().ReverseMap();
+                cfg.CreateMap<PasswordPolicy, PasswordPolicyInnerVM>().ReverseMap();
+                cfg.CreateMap<PasswordPolicy, PasswordPolicyVMForView>().ReverseMap();
+                cfg.CreateMap<PasswordPolicy, PasswordPolicyVM>().ReverseMap();
+              
 
             });
             var mapper = config.CreateMapper();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Sufrati.Domain.ApiModels
 {
-    public class UserVM 
+    public class UserVM
     {
         public long ID { get; set; }
         public string LoginName { get; set; }
@@ -25,13 +25,11 @@ namespace Sufrati.Domain.ApiModels
 
 
         public long PasswordPolicyID { get; set; }
-        public string UserImageOriginal { get; set; }
-        public string UserImageSmall { get; set; }
 
 
         public GeneralLookupInnerValueVM UserType { get; set; }
-        public PasswordPolicyVMForView PasswordPolicy { get; set; }
-
+        public PasswordPolicyVM PasswordPolicy { get; set; }
+        public AttachmentVM Attachment { get; set; }
 
     }
 }

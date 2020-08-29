@@ -55,13 +55,15 @@ namespace Sufrati.Data.Repositories
             var result = await _context.GeneralLookupValue.Where(a => a.ID == id).Include(e => e.GeneralLookupType).FirstOrDefaultAsync();
             return result;
         }
-
         public async Task<GeneralLookupValue> UpdateGeneralLookupAsync(GeneralLookupValue input, CancellationToken ct)
         {
-            var update = _context.GeneralLookupValue.Update(input);
-            update.Property(e => e.CreatedByID).IsModified = false;
-            update.Property(e => e.Created_Date).IsModified = false;
-            await _context.SaveChangesAsync(ct);
+            var update = await _context.GeneralLookupValue.FirstAsync(g => g.ID == input.ID);
+            input.CreatedByID = update.CreatedByID;
+            input.CreatedDate = update.CreatedDate;
+
+            _context.Entry(update).CurrentValues.SetValues(input);
+            await _context.SaveChangesAsync();
+
             return input;
         }
 

@@ -21,7 +21,15 @@ namespace Sufrati.Data.Repositories
         {
             _context = context;
         }
-
+        public async Task<bool> RemoveUsersFromGroup(long id, List<long> usersId, CancellationToken ct = default)
+        {
+            var result = await _context.UserGroup
+                            .Where(p => p.GroupID == id && usersId.Contains(p.UserID))
+                            .ToListAsync();
+            _context.UserGroup.RemoveRange(result);
+            await _context.SaveChangesAsync(ct);
+            return true;
+        }
         public async Task<Groups> AddGroup(Groups input, List<User> users, IHttpContextAccessor accessor, CancellationToken ct = default)
         {
             try
@@ -42,7 +50,12 @@ namespace Sufrati.Data.Repositories
 
             return input;
         }
-
+        public async Task<bool> AddUsersForGroup(List<UserGroup> userGroups, CancellationToken ct = default)
+        {
+            _context.UserGroup.AddRange(userGroups);
+            await _context.SaveChangesAsync(ct);
+            return true;
+        }
         private async Task AddGroupUsers(long groupId, List<long> usersId, bool isAdd, CancellationToken ct = default)
         {
             if (isAdd)
@@ -125,18 +138,20 @@ namespace Sufrati.Data.Repositories
         {
             return await _context.User.ToListAsync(ct);
         }
-        public async Task<bool> UpdateGroup(Groups group, List<User> users, IHttpContextAccessor accessor, CancellationToken ct = default)
+        public async Task<bool> UpdateGroup(Groups group, CancellationToken ct = default)
         {
-            var update = _context.Groups.Update(group);
-            update.Property(e => e.CreatedByID).IsModified = false;
-            update.Property(e => e.Created_Date).IsModified = false;
-            await _context.SaveChangesAsync(ct);
+            var update = await _context.Groups.FirstAsync(g => g.ID == group.ID);
+            group.CreatedByID = update.CreatedByID;
+            group.CreatedDate = update.CreatedDate;
+
+            _context.Entry(update).CurrentValues.SetValues(group);
+            await _context.SaveChangesAsync();
 
             //Now Add Group Users if exsist
-            if (users.Count != 0)
-            {
-                await AddGroupUsers(group.ID, users.Select(u => u.ID).ToList(), false, ct);
-            }
+            //if (users.Count != 0)
+            //{
+            //    await AddGroupUsers(group.ID, users.Select(u => u.ID).ToList(), false, ct);
+            //}
 
             return true;
         }

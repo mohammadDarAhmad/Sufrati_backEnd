@@ -10,7 +10,7 @@ using Sufrati.Data;
 namespace Sufrati_backEnd.API.Migrations
 {
     [DbContext(typeof(SufratiContext))]
-    [Migration("20200822160948_1")]
+    [Migration("20200829132204_1")]
     partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,120 @@ namespace Sufrati_backEnd.API.Migrations
                 .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.Attachment", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CreatedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LastModifiedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OriginalFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhysicalFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Attachment");
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.AttachmentType", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttachmentDescAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("AttachmentDescEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<long?>("CreatedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LastModifiedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("MaxSize")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AttachmentType");
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.AttachmentTypeFileType", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("AttachmentTypeID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CreatedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("FileTypeID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LastModifiedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AttachmentTypeID");
+
+                    b.HasIndex("FileTypeID");
+
+                    b.ToTable("AttachmentTypeFileType");
+                });
 
             modelBuilder.Entity("Sufrati.Domain.Entities.AuditLog", b =>
                 {
@@ -55,6 +169,44 @@ namespace Sufrati_backEnd.API.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("AuditLog");
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.FileType", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("CreatedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<string>("FileTypeDescAr")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("FileTypeDescEn")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LastModifiedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FileType");
                 });
 
             modelBuilder.Entity("Sufrati.Domain.Entities.GeneralLookupType", b =>
@@ -95,7 +247,7 @@ namespace Sufrati_backEnd.API.Migrations
                     b.Property<long?>("CreatedByID")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Created_Date")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("GeneralLookupTypeID")
@@ -129,11 +281,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 106000000000001L,
                             CreatedByID = 101000000000001L,
-                            Created_Date = new DateTime(2020, 8, 22, 19, 9, 47, 611, DateTimeKind.Local).AddTicks(1830),
+                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(5987),
                             GeneralLookupTypeID = 105000000000001L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 22, 19, 9, 47, 611, DateTimeKind.Local).AddTicks(1888),
+                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(6068),
                             ValueAr = "آدمن رئيسي",
                             ValueEn = "admin"
                         });
@@ -149,7 +301,7 @@ namespace Sufrati_backEnd.API.Migrations
                     b.Property<long?>("CreatedByID")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Created_Date")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DescriptionAr")
@@ -170,7 +322,7 @@ namespace Sufrati_backEnd.API.Migrations
 
                     b.Property<string>("NameAr")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NameEn")
                         .IsRequired()
@@ -181,6 +333,12 @@ namespace Sufrati_backEnd.API.Migrations
                     b.HasIndex("ID")
                         .IsUnique();
 
+                    b.HasIndex("NameAr")
+                        .IsUnique();
+
+                    b.HasIndex("NameEn")
+                        .IsUnique();
+
                     b.ToTable("Groups");
 
                     b.HasData(
@@ -188,12 +346,12 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 147000000000001L,
                             CreatedByID = 101000000000001L,
-                            Created_Date = new DateTime(2020, 8, 22, 19, 9, 47, 612, DateTimeKind.Local).AddTicks(2307),
+                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4300),
                             DescriptionAr = "هذه المجموعة للمسؤولين الرئيسين",
                             DescriptionEn = "this group for Admins",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 22, 19, 9, 47, 612, DateTimeKind.Local).AddTicks(2334),
+                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4377),
                             NameAr = "أدمن",
                             NameEn = "Admins"
                         });
@@ -209,7 +367,7 @@ namespace Sufrati_backEnd.API.Migrations
                     b.Property<long?>("CreatedByID")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Created_Date")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("FirstLoginChangePassword")
@@ -249,7 +407,7 @@ namespace Sufrati_backEnd.API.Migrations
 
                     b.Property<string>("TitleEn")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("varchar(1000)");
 
                     b.HasKey("ID");
 
@@ -263,20 +421,92 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 148000000000001L,
                             CreatedByID = 101000000000001L,
-                            Created_Date = new DateTime(2020, 8, 22, 19, 9, 47, 593, DateTimeKind.Local).AddTicks(7723),
+                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 30, DateTimeKind.Local).AddTicks(7188),
                             FirstLoginChangePassword = true,
                             IPAddress = "127.0.0.1",
                             IncludeCharacter = true,
                             IncludeNumeric = true,
                             IncludeSpecialCharacter = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 22, 19, 9, 47, 596, DateTimeKind.Local).AddTicks(7186),
+                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 50, DateTimeKind.Local).AddTicks(3789),
                             MinLength = 6,
                             SessionAfterEnd = 60,
                             SuspendPasswordAfter = 5,
                             TitleAr = "سياسة 1",
                             TitleEn = "Policy 1"
                         });
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.SystemConstant", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttachmentPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("CreatedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("EnableSSL")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("FinesAmountPerEachDayDelayed")
+                        .HasColumnType("decimal(10, 4)");
+
+                    b.Property<string>("FormEmailAddress")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("LastModifiedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("MaxCompensationAmount")
+                        .HasColumnType("decimal(18, 4)");
+
+                    b.Property<int>("NotifyBanksForInvoiceAfter")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OutgoingSMTPServer")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("QualitativeCriteriaMaxScore")
+                        .HasColumnType("decimal(5, 2)");
+
+                    b.Property<int>("SMTPPortNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SMTPServerRequiresAuthentication")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("TotalQuantitativeCriteriaMaxScore")
+                        .HasColumnType("decimal(5, 2)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Weekend")
+                        .IsRequired()
+                        .HasColumnType("char(7)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("SystemConstant");
                 });
 
             modelBuilder.Entity("Sufrati.Domain.Entities.User", b =>
@@ -290,10 +520,13 @@ namespace Sufrati_backEnd.API.Migrations
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
 
+                    b.Property<long?>("AttachmentID")
+                        .HasColumnType("bigint");
+
                     b.Property<long?>("CreatedByID")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Created_Date")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -331,30 +564,34 @@ namespace Sufrati_backEnd.API.Migrations
 
                     b.Property<string>("NameEn")
                         .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("Notes")
                         .HasColumnType("ntext");
+
+                    b.Property<long>("NumberOfWrongLogin")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
+                    b.Property<bool>("PasswordActive")
+                        .HasColumnType("bit");
+
                     b.Property<long>("PasswordPolicyID")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("UserImageOriginal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserImageSmall")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("UserImageID")
+                        .HasColumnType("bigint");
 
                     b.Property<long>("UserTypeID")
                         .HasColumnType("bigint");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AttachmentID");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -372,45 +609,47 @@ namespace Sufrati_backEnd.API.Migrations
                         new
                         {
                             ID = 101000000000001L,
-                            Address = "",
-                            Created_Date = new DateTime(2020, 8, 22, 19, 9, 47, 607, DateTimeKind.Local).AddTicks(6541),
-                            Email = "Ali@Gmail.com",
-                            HomePhone = "",
+                            Address = "Ramallah",
+                            CreatedByID = 101000000000001L,
+                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9442),
+                            Email = "Admin@Gmail.com",
+                            HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
-                            LastModifiedDate = new DateTime(2020, 8, 22, 19, 9, 47, 607, DateTimeKind.Local).AddTicks(6598),
-                            LoginName = "Ali",
-                            Mobile = "",
-                            NameAr = "علي",
-                            NameEn = "Ali P",
-                            Notes = "",
-                            Password = "536re62er6r",
+                            LastModifiedByID = 101000000000001L,
+                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9542),
+                            LoginName = "Admin",
+                            Mobile = "0599999999",
+                            NameAr = "مسؤول النظام",
+                            NameEn = "Admin",
+                            Notes = "Admin User of the system",
+                            NumberOfWrongLogin = 0L,
+                            Password = "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=",
+                            PasswordActive = false,
                             PasswordPolicyID = 148000000000001L,
-                            UserImageOriginal = "localhost://",
-                            UserImageSmall = "localhost://",
                             UserTypeID = 106000000000001L
                         },
                         new
                         {
                             ID = 101000000000002L,
-                            Address = "",
-                            CreatedByID = 1L,
-                            Created_Date = new DateTime(2020, 8, 22, 19, 9, 47, 607, DateTimeKind.Local).AddTicks(6734),
-                            Email = "Ahmad@Gmail.com",
-                            HomePhone = "",
+                            Address = "Ramallah",
+                            CreatedByID = 101000000000001L,
+                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9863),
+                            Email = "Ala@Gmail.com",
+                            HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
-                            LastModifiedByID = 1L,
-                            LastModifiedDate = new DateTime(2020, 8, 22, 19, 9, 47, 607, DateTimeKind.Local).AddTicks(6738),
-                            LoginName = "Ahmad",
-                            Mobile = "",
-                            NameAr = "احمد",
-                            NameEn = "Ahmad P",
-                            Notes = "",
-                            Password = "536re62er6r",
+                            LastModifiedByID = 101000000000001L,
+                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9876),
+                            LoginName = "Ala",
+                            Mobile = "0599999999",
+                            NameAr = "علاء",
+                            NameEn = "Ala",
+                            Notes = "Admin User of the system",
+                            NumberOfWrongLogin = 0L,
+                            Password = "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=",
+                            PasswordActive = false,
                             PasswordPolicyID = 148000000000001L,
-                            UserImageOriginal = "localshost://",
-                            UserImageSmall = "localhost://",
                             UserTypeID = 106000000000001L
                         });
                 });
@@ -448,6 +687,21 @@ namespace Sufrati_backEnd.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Sufrati.Domain.Entities.AttachmentTypeFileType", b =>
+                {
+                    b.HasOne("Sufrati.Domain.Entities.AttachmentType", "AttachmentType")
+                        .WithMany("FileTypes")
+                        .HasForeignKey("AttachmentTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sufrati.Domain.Entities.FileType", "FileType")
+                        .WithMany()
+                        .HasForeignKey("FileTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Sufrati.Domain.Entities.GeneralLookupValue", b =>
                 {
                     b.HasOne("Sufrati.Domain.Entities.GeneralLookupType", "GeneralLookupType")
@@ -459,6 +713,10 @@ namespace Sufrati_backEnd.API.Migrations
 
             modelBuilder.Entity("Sufrati.Domain.Entities.User", b =>
                 {
+                    b.HasOne("Sufrati.Domain.Entities.Attachment", "Attachment")
+                        .WithMany()
+                        .HasForeignKey("AttachmentID");
+
                     b.HasOne("Sufrati.Domain.Entities.PasswordPolicy", "PasswordPolicy")
                         .WithMany("Users")
                         .HasForeignKey("PasswordPolicyID")

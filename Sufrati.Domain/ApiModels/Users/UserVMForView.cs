@@ -14,7 +14,7 @@ namespace Sufrati.Domain.ApiModels
         public bool IsActive { get; set; }
         public long PasswordPolicyID { get; set; }
         public GeneralLookupInnerValueVM UserType { get; set; }
-        public PasswordPolicyVMForView PasswordPolicy { get; set; }
+        public PasswordPolicyVM PasswordPolicy { get; set; }
 
     }
 }

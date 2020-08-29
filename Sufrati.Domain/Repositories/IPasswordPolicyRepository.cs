@@ -17,7 +17,8 @@ namespace Sufrati.Domain.Repositories
         Task<List<PasswordPolicy>> GetPasswordPolicys(CancellationToken ct = default);
         Task<PasswordPolicy> GetPasswordPolicyById(long id, CancellationToken ct = default);
         Task<BaseVM> GetPasswordPolicyInformation(long id, CancellationToken ct = default);
-        Task<bool> UpdatePasswordPolicy(PasswordPolicy passwordPolicy, IHttpContextAccessor accessor, CancellationToken ct = default);
+        Task<bool> UpdatePasswordPolicy(PasswordPolicy passwordPolicy, CancellationToken ct = default);
         Task<bool> DeletePasswordPolicy(long id, CancellationToken ct = default);
+
     }
 }

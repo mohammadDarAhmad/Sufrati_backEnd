@@ -41,7 +41,7 @@ namespace Sufrati.Domain.Supervisor
         {
             var passwordPolicy = _Mapper.Map<PasswordPolicyVM, PasswordPolicy>(passwordPolicyVM);
             GeneralMethod.AddBaseProperties<PasswordPolicy>(passwordPolicy, accessor, user, false);
-            return await _PasswordPolicyRepository.UpdatePasswordPolicy(passwordPolicy, accessor, ct);
+            return await _PasswordPolicyRepository.UpdatePasswordPolicy(passwordPolicy, ct);
         }
         public async Task<bool> DeletePasswordPolicy(long id, CancellationToken ct = default)
         {
