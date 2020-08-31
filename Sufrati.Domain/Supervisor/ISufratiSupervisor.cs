@@ -78,5 +78,16 @@ namespace Sufrati.Domain.Supervisor
         Task<BaseVM> GetSystemConstantInformation(CancellationToken ct = default);
         Task<bool> UpdateSystemConstant(SystemConstantVM systemConstantVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
         #endregion
+
+        #region Authentication
+        Task<User> Authentication(UserLoginVM userLogin, IHttpContextAccessor accessor, CancellationToken ct = default);
+        Task<List<long>> GetUserPermissionForLogin(long id, IHttpContextAccessor accessor, CancellationToken ct = default);
+
+        #endregion
+
+        #region MyNLog
+        Task MyNlogLogoutProperety(string token, CancellationToken ct = default);
+
+        #endregion
     }
 }
