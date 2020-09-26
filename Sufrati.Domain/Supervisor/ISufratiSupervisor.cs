@@ -81,7 +81,7 @@ namespace Sufrati.Domain.Supervisor
 
         #region Authentication
         Task<User> Authentication(UserLoginVM userLogin, IHttpContextAccessor accessor, CancellationToken ct = default);
-        Task<List<long>> GetUserPermissionForLogin(long id, IHttpContextAccessor accessor, CancellationToken ct = default);
+        //Task<List<long>> GetUserPermissionForLogin(long id, IHttpContextAccessor accessor, CancellationToken ct = default);
 
         #endregion
 

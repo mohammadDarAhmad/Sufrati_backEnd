@@ -19,8 +19,10 @@ namespace Sufrati.Domain.Supervisor
         private readonly IFileTypeRepository _IFileTypeRepository;
         private readonly IAttachmentTypeReository _IAttachmentTypeReository;
         private readonly ISystemConstantRepository _SystemConstantRepository;
-
         private readonly IAttachmentTypeFileTypeRepository _IAttachmentTypeFileTypeRepository;
+        private readonly IMyNLogRepository _IMyNLogRepository;
+        private readonly IAuthenticationRepository _AuthenticationRepository;
+
         public SufratiSupervisor(
             IMapper Mapper,
             IUserRepository UserRepository,
@@ -31,7 +33,9 @@ namespace Sufrati.Domain.Supervisor
             IAttachmentRepository AttachmentRepository,
                IFileTypeRepository FileTypeRepository,
             IAttachmentTypeReository AttachmentTypeReository,
-            IAttachmentTypeFileTypeRepository AttachmentTypeFileTypeRepository
+            IMyNLogRepository IMyNLogRepository,
+            IAttachmentTypeFileTypeRepository AttachmentTypeFileTypeRepository,
+            IAuthenticationRepository AuthenticationRepository
             )
         {
 
@@ -44,6 +48,8 @@ namespace Sufrati.Domain.Supervisor
             _IAttachmentTypeReository = AttachmentTypeReository;
             _IAttachmentTypeFileTypeRepository = AttachmentTypeFileTypeRepository;
             _IAttachmentRepository = AttachmentRepository;
+            _IMyNLogRepository = IMyNLogRepository;
+            _AuthenticationRepository = AuthenticationRepository;
             _connectionString = configuration.GetConnectionString("Sufrati_CS");
 
         }

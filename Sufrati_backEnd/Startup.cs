@@ -64,6 +64,8 @@ namespace Sufrati_backEnd
               };
           });
             services.AddMvc();
+            services.AddSession();
+
             services.AddSwaggerGen();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -91,6 +93,7 @@ namespace Sufrati_backEnd
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
             app.UseHttpsRedirection();
+            app.UseSession();
 
             app.UseRouting();
 

@@ -288,6 +288,48 @@ namespace Sufrati_backEnd.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MyNLog",
+                columns: table => new
+                {
+                    ID = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LogDate = table.Column<DateTime>(nullable: false),
+                    IPAddress = table.Column<string>(type: "varchar(15)", nullable: false),
+                    UserID = table.Column<long>(nullable: true),
+                    RequestURL = table.Column<string>(nullable: true),
+                    Action = table.Column<string>(nullable: true),
+                    EntityID = table.Column<long>(nullable: true),
+                    LogTypeID = table.Column<long>(nullable: false),
+                    ExceptionType = table.Column<string>(nullable: true),
+                    ExceptionMessages = table.Column<string>(nullable: true),
+                    MessagesCode = table.Column<string>(nullable: true),
+                    AdditionalInfo = table.Column<string>(nullable: true),
+                    PasswordChangedByID = table.Column<long>(nullable: true),
+                    LogoutTime = table.Column<DateTime>(nullable: true),
+                    Token = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MyNLog", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_MyNLog_GeneralLookupValue_LogTypeID",
+                        column: x => x.LogTypeID,
+                        principalTable: "GeneralLookupValue",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MyNLog_User_PasswordChangedByID",
+                        column: x => x.PasswordChangedByID,
+                        principalTable: "User",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "FK_MyNLog_User_UserID",
+                        column: x => x.UserID,
+                        principalTable: "User",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserGroup",
                 columns: table => new
                 {
@@ -321,27 +363,27 @@ namespace Sufrati_backEnd.API.Migrations
             migrationBuilder.InsertData(
                 table: "Groups",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "DescriptionAr", "DescriptionEn", "IPAddress", "LastModifiedByID", "LastModifiedDate", "NameAr", "NameEn" },
-                values: new object[] { 147000000000001L, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4300), "هذه المجموعة للمسؤولين الرئيسين", "this group for Admins", "127.0.0.1", 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4377), "أدمن", "Admins" });
+                values: new object[] { 147000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9286), "هذه المجموعة للمسؤولين الرئيسين", "this group for Admins", "127.0.0.1", 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9357), "أدمن", "Admins" });
 
             migrationBuilder.InsertData(
                 table: "PasswordPolicy",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "FirstLoginChangePassword", "IPAddress", "IncludeCharacter", "IncludeNumeric", "IncludeSpecialCharacter", "LastModifiedByID", "LastModifiedDate", "MinLength", "SessionAfterEnd", "SuspendPasswordAfter", "TitleAr", "TitleEn" },
-                values: new object[] { 148000000000001L, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 30, DateTimeKind.Local).AddTicks(7188), true, "127.0.0.1", true, true, true, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 50, DateTimeKind.Local).AddTicks(3789), 6, 60, 5, "سياسة 1", "Policy 1" });
+                values: new object[] { 148000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 26, DateTimeKind.Local).AddTicks(7672), true, "127.0.0.1", true, true, true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 31, DateTimeKind.Local).AddTicks(8441), 6, 60, 5, "سياسة 1", "Policy 1" });
 
             migrationBuilder.InsertData(
                 table: "GeneralLookupValue",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "GeneralLookupTypeID", "IPAddress", "LastModifiedByID", "LastModifiedDate", "ValueAr", "ValueEn" },
-                values: new object[] { 106000000000001L, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(5987), 105000000000001L, "127.0.0.1", 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(6068), "آدمن رئيسي", "admin" });
+                values: new object[] { 106000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8582), 105000000000001L, "127.0.0.1", 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8663), "آدمن رئيسي", "admin" });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "ID", "Address", "AttachmentID", "CreatedByID", "CreatedDate", "Email", "HomePhone", "IPAddress", "IsActive", "LastModifiedByID", "LastModifiedDate", "LoginName", "Mobile", "NameAr", "NameEn", "Notes", "NumberOfWrongLogin", "Password", "PasswordActive", "PasswordPolicyID", "UserImageID", "UserTypeID" },
-                values: new object[] { 101000000000001L, "Ramallah", null, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9442), "Admin@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9542), "Admin", "0599999999", "مسؤول النظام", "Admin", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
+                values: new object[] { 101000000000001L, "Ramallah", null, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3245), "Admin@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3330), "Admin", "0599999999", "مسؤول النظام", "Admin", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "ID", "Address", "AttachmentID", "CreatedByID", "CreatedDate", "Email", "HomePhone", "IPAddress", "IsActive", "LastModifiedByID", "LastModifiedDate", "LoginName", "Mobile", "NameAr", "NameEn", "Notes", "NumberOfWrongLogin", "Password", "PasswordActive", "PasswordPolicyID", "UserImageID", "UserTypeID" },
-                values: new object[] { 101000000000002L, "Ramallah", null, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9863), "Ala@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9876), "Ala", "0599999999", "علاء", "Ala", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
+                values: new object[] { 101000000000002L, "Ramallah", null, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3552), "Ala@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3565), "Ala", "0599999999", "علاء", "Ala", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
 
             migrationBuilder.InsertData(
                 table: "UserGroup",
@@ -380,6 +422,21 @@ namespace Sufrati_backEnd.API.Migrations
                 table: "Groups",
                 column: "NameEn",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MyNLog_LogTypeID",
+                table: "MyNLog",
+                column: "LogTypeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MyNLog_PasswordChangedByID",
+                table: "MyNLog",
+                column: "PasswordChangedByID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MyNLog_UserID",
+                table: "MyNLog",
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PasswordPolicy_ID",
@@ -438,6 +495,9 @@ namespace Sufrati_backEnd.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "AuditLog");
+
+            migrationBuilder.DropTable(
+                name: "MyNLog");
 
             migrationBuilder.DropTable(
                 name: "SystemConstant");

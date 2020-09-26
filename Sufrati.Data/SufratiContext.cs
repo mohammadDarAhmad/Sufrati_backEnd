@@ -24,6 +24,7 @@ namespace Sufrati.Data
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<SystemConstant> SystemConstant { get; set; }
+        public virtual DbSet<MyNLog> MyNLog { get; set; }
 
         #region Attachment
         public DbSet<AttachmentType> AttachmentType { get; set; }
@@ -34,7 +35,7 @@ namespace Sufrati.Data
 
         public SufratiContext(DbContextOptions<SufratiContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
-            this.ChangeTracker.LazyLoadingEnabled = false;
+          // this.ChangeTracker.LazyLoadingEnabled = false;
             this.httpContextAccessor = httpContextAccessor;
         }
 
@@ -48,6 +49,7 @@ namespace Sufrati.Data
             new GeneralLookupValueConfiguration(modelBuilder.Entity<GeneralLookupValue>());
             new GroupConfiguration(modelBuilder.Entity<Groups>());
             new AuditLogConfiguration(modelBuilder.Entity<AuditLog>());
+            new NLogConfiguration(modelBuilder.Entity<MyNLog>());
         }//new GeneralLookupTypeConfiguration(modelBuilder.Entity<GeneralLookupType>());
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -279,11 +279,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 106000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(5987),
+                            CreatedDate = new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8582),
                             GeneralLookupTypeID = 105000000000001L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 90, DateTimeKind.Local).AddTicks(6068),
+                            LastModifiedDate = new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8663),
                             ValueAr = "آدمن رئيسي",
                             ValueEn = "admin"
                         });
@@ -344,15 +344,76 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 147000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4300),
+                            CreatedDate = new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9286),
                             DescriptionAr = "هذه المجموعة للمسؤولين الرئيسين",
                             DescriptionEn = "this group for Admins",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 94, DateTimeKind.Local).AddTicks(4377),
+                            LastModifiedDate = new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9357),
                             NameAr = "أدمن",
                             NameEn = "Admins"
                         });
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.MyNLog", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Action")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdditionalInfo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("EntityID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ExceptionMessages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExceptionType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IPAddress")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
+
+                    b.Property<DateTime>("LogDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("LogTypeID")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LogoutTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MessagesCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("PasswordChangedByID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("RequestURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UserID")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("LogTypeID");
+
+                    b.HasIndex("PasswordChangedByID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("MyNLog");
                 });
 
             modelBuilder.Entity("Sufrati.Domain.Entities.PasswordPolicy", b =>
@@ -419,14 +480,14 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 148000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 30, DateTimeKind.Local).AddTicks(7188),
+                            CreatedDate = new DateTime(2020, 9, 25, 18, 36, 9, 26, DateTimeKind.Local).AddTicks(7672),
                             FirstLoginChangePassword = true,
                             IPAddress = "127.0.0.1",
                             IncludeCharacter = true,
                             IncludeNumeric = true,
                             IncludeSpecialCharacter = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 50, DateTimeKind.Local).AddTicks(3789),
+                            LastModifiedDate = new DateTime(2020, 9, 25, 18, 36, 9, 31, DateTimeKind.Local).AddTicks(8441),
                             MinLength = 6,
                             SessionAfterEnd = 60,
                             SuspendPasswordAfter = 5,
@@ -609,13 +670,13 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 101000000000001L,
                             Address = "Ramallah",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9442),
+                            CreatedDate = new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3245),
                             Email = "Admin@Gmail.com",
                             HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9542),
+                            LastModifiedDate = new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3330),
                             LoginName = "Admin",
                             Mobile = "0599999999",
                             NameAr = "مسؤول النظام",
@@ -632,13 +693,13 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 101000000000002L,
                             Address = "Ramallah",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9863),
+                            CreatedDate = new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3552),
                             Email = "Ala@Gmail.com",
                             HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2020, 8, 29, 16, 22, 3, 75, DateTimeKind.Local).AddTicks(9876),
+                            LastModifiedDate = new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3565),
                             LoginName = "Ala",
                             Mobile = "0599999999",
                             NameAr = "علاء",
@@ -707,6 +768,25 @@ namespace Sufrati_backEnd.API.Migrations
                         .HasForeignKey("GeneralLookupTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Sufrati.Domain.Entities.MyNLog", b =>
+                {
+                    b.HasOne("Sufrati.Domain.Entities.GeneralLookupValue", "LogType")
+                        .WithMany()
+                        .HasForeignKey("LogTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sufrati.Domain.Entities.User", "PasswordChangedByUser")
+                        .WithMany()
+                        .HasForeignKey("PasswordChangedByID")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Sufrati.Domain.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("Sufrati.Domain.Entities.User", b =>

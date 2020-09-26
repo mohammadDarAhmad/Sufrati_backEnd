@@ -27,6 +27,8 @@ namespace Sufrati_backEnd.API.Configurations
             services.AddScoped<IAttachmentRepository, AttachmentRepository>();
             services.AddScoped<IFileTypeRepository, FileTypeRepository>();
             services.AddScoped<ISystemConstantRepository, SystemConstantRepository>();
+            services.AddScoped<IMyNLogRepository, MyNLogRepository>();
+            services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
            // services.AddScoped<IFileTypeRepository, FileTypeRepository>();
 
             return services;

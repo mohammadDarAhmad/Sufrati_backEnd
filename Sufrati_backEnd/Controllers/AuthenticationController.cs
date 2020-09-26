@@ -49,7 +49,7 @@ namespace Sufrati_backEnd.API.Controllers
 
 
             var user = await _supervisor.Authentication(input, _accessor, ct);
-            var action = await _supervisor.GetUserPermissionForLogin(user.ID, _accessor, ct);
+            //var action = await _supervisor.GetUserPermissionForLogin(user.ID, _accessor, ct);
             IActionResult response = Unauthorized();
             if (user != null)
             {
@@ -61,7 +61,7 @@ namespace Sufrati_backEnd.API.Controllers
                 {
                     token = tokenString,
                     userDetails = userNew,
-                    action = action
+                    //action = action
                 });
                 LogManager.Configuration.Variables["Token"] = tokenString;
                 logger.Info(input.LoginName + " " + "Login Successfully");
@@ -99,9 +99,15 @@ namespace Sufrati_backEnd.API.Controllers
 
             _accessor.HttpContext.Session.Clear();
             await _accessor.HttpContext.SignOutAsync("cookies");
+            try
+            {
 
-            await _supervisor.MyNlogLogoutProperety(checkToken);
-            return StatusCode(200, new JsonResult(true));
+                await _supervisor.MyNlogLogoutProperety(checkToken);
+            }catch(Exception ex)
+            {
+
+            }
+                return StatusCode(200, new JsonResult(true));
         }
 
         string GenerateJWTToken(User userInfo)
