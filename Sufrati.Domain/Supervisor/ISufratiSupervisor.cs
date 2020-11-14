@@ -89,5 +89,8 @@ namespace Sufrati.Domain.Supervisor
         Task MyNlogLogoutProperety(string token, CancellationToken ct = default);
 
         #endregion
+        #region Recipe
+        Task<bool> AddRecipe(RecipeVM recipe, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        #endregion
     }
 }

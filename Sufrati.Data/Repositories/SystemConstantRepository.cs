@@ -19,7 +19,8 @@ namespace Sufrati.Data.Repositories
         }
         public async Task<SystemConstant> GetSystemConstant(CancellationToken ct = default)
         {
-            return await _context.SystemConstant.SingleOrDefaultAsync();
+            var constant =  await _context.SystemConstant.SingleOrDefaultAsync();
+            return constant;
         }
         public async Task<BaseVM> GetSystemConstantInformation(CancellationToken ct = default)
         {

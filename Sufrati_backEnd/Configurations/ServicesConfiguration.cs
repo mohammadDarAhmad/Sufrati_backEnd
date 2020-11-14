@@ -29,6 +29,7 @@ namespace Sufrati_backEnd.API.Configurations
             services.AddScoped<ISystemConstantRepository, SystemConstantRepository>();
             services.AddScoped<IMyNLogRepository, MyNLogRepository>();
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
            // services.AddScoped<IFileTypeRepository, FileTypeRepository>();
 
             return services;
@@ -70,6 +71,8 @@ namespace Sufrati_backEnd.API.Configurations
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyInnerVM>().ReverseMap();
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVMForView>().ReverseMap();
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVM>().ReverseMap();
+                cfg.CreateMap<Recipe, RecipeVM>().ReverseMap();
+                cfg.CreateMap<Attachment, AttachmentVM>().ReverseMap();
               
 
             });
