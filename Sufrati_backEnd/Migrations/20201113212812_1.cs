@@ -68,6 +68,35 @@ namespace Sufrati_backEnd.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BankAccounts",
+                columns: table => new
+                {
+                    BankAccountID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountNumber = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    AccountHolder = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    BankID = table.Column<int>(nullable: false),
+                    IFSC = table.Column<string>(type: "nvarchar(20)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BankAccounts", x => x.BankAccountID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Banks",
+                columns: table => new
+                {
+                    BankID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BankName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Banks", x => x.BankID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FileType",
                 columns: table => new
                 {
@@ -149,6 +178,33 @@ namespace Sufrati_backEnd.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Recipe",
+                columns: table => new
+                {
+                    ID = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedByID = table.Column<long>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    LastModifiedByID = table.Column<long>(nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(nullable: false),
+                    IPAddress = table.Column<string>(nullable: false),
+                    UserID = table.Column<string>(maxLength: 100, nullable: false),
+                    TitleRecipeAr = table.Column<string>(nullable: false),
+                    TitleRecipeEn = table.Column<string>(nullable: false),
+                    PreparationTimeMinutes = table.Column<long>(nullable: false),
+                    Ingredients = table.Column<string>(type: "varchar(200)", nullable: false),
+                    PreparationMethod = table.Column<string>(type: "varchar(100)", nullable: false),
+                    photo = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Video = table.Column<string>(type: "varchar(100)", nullable: true),
+                    ClassificationClassification = table.Column<string>(nullable: true),
+                    classificationInternational = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recipe", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SystemConstant",
                 columns: table => new
                 {
@@ -197,17 +253,15 @@ namespace Sufrati_backEnd.API.Migrations
                 {
                     table.PrimaryKey("PK_AttachmentTypeFileType", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_AttachmentTypeFileType_AttachmentType_AttachmentTypeID",
+                        name: "FK_AttachmentType_AttachmentTypeFileType_AttachmentTypeID",
                         column: x => x.AttachmentTypeID,
                         principalTable: "AttachmentType",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                     table.ForeignKey(
-                        name: "FK_AttachmentTypeFileType_FileType_FileTypeID",
+                        name: "FK_FileType_AttachmentTypeFileType_FileTypeID",
                         column: x => x.FileTypeID,
                         principalTable: "FileType",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -356,34 +410,86 @@ namespace Sufrati_backEnd.API.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Attachment",
+                columns: new[] { "ID", "CreatedByID", "CreatedDate", "FilePath", "IPAddress", "LastModifiedByID", "LastModifiedDate", "OriginalFileName", "PhysicalFileName" },
+                values: new object[] { 160000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 48, DateTimeKind.Local).AddTicks(2056), "00", "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 48, DateTimeKind.Local).AddTicks(2094), "File1", "Filefile" });
+
+            migrationBuilder.InsertData(
+                table: "AttachmentType",
+                columns: new[] { "ID", "AttachmentDescAr", "AttachmentDescEn", "CreatedByID", "CreatedDate", "IPAddress", "LastModifiedByID", "LastModifiedDate", "MaxSize" },
+                values: new object[,]
+                {
+                    { 199000000000001L, "عربي", "eng", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 49, DateTimeKind.Local).AddTicks(1135), "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 49, DateTimeKind.Local).AddTicks(1208), 10m },
+                    { 199000000000002L, "عربي", "eng", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 49, DateTimeKind.Local).AddTicks(1290), "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 49, DateTimeKind.Local).AddTicks(1297), 10m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FileType",
+                columns: new[] { "ID", "CreatedByID", "CreatedDate", "FileExtension", "FileTypeDescAr", "FileTypeDescEn", "IPAddress", "LastModifiedByID", "LastModifiedDate" },
+                values: new object[,]
+                {
+                    { 198000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3282), ".jpeg", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3361) },
+                    { 198000000000002L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3414), ".pdf", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3427) },
+                    { 198000000000003L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3439), ".rar", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3451) },
+                    { 198000000000004L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3463), ".xls", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3475) },
+                    { 198000000000005L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3488), ".xlsx", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3499) },
+                    { 198000000000006L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3511), ".docx", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3523) },
+                    { 198000000000007L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3531), ".doc", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3536) },
+                    { 198000000000008L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3543), ".png", null, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 52, DateTimeKind.Local).AddTicks(3555) }
+                });
+
+            migrationBuilder.InsertData(
                 table: "GeneralLookupType",
                 columns: new[] { "ID", "GeneralLookupNameAr", "GeneralLookupNameEn" },
-                values: new object[] { 105000000000001L, "نوع المستخدم", "User Type" });
+                values: new object[,]
+                {
+                    { 105000000000001L, "نوع المستخدم", "User Type" },
+                    { 105000000000002L, "تنصصيف حسب الاصناف", "Classification by category" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Groups",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "DescriptionAr", "DescriptionEn", "IPAddress", "LastModifiedByID", "LastModifiedDate", "NameAr", "NameEn" },
-                values: new object[] { 147000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9286), "هذه المجموعة للمسؤولين الرئيسين", "this group for Admins", "127.0.0.1", 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 82, DateTimeKind.Local).AddTicks(9357), "أدمن", "Admins" });
+                values: new object[] { 147000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 35, DateTimeKind.Local).AddTicks(6373), "هذه المجموعة للمسؤولين الرئيسين", "this group for Admins", "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 35, DateTimeKind.Local).AddTicks(6431), "أدمن", "Admins" });
 
             migrationBuilder.InsertData(
                 table: "PasswordPolicy",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "FirstLoginChangePassword", "IPAddress", "IncludeCharacter", "IncludeNumeric", "IncludeSpecialCharacter", "LastModifiedByID", "LastModifiedDate", "MinLength", "SessionAfterEnd", "SuspendPasswordAfter", "TitleAr", "TitleEn" },
-                values: new object[] { 148000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 26, DateTimeKind.Local).AddTicks(7672), true, "127.0.0.1", true, true, true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 31, DateTimeKind.Local).AddTicks(8441), 6, 60, 5, "سياسة 1", "Policy 1" });
+                values: new object[] { 148000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 9, DateTimeKind.Local).AddTicks(6999), true, "127.0.0.1", true, true, true, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 13, DateTimeKind.Local).AddTicks(2401), 6, 60, 5, "سياسة 1", "Policy 1" });
+
+            migrationBuilder.InsertData(
+                table: "SystemConstant",
+                columns: new[] { "ID", "AttachmentPath", "CreatedByID", "CreatedDate", "EnableSSL", "FinesAmountPerEachDayDelayed", "FormEmailAddress", "IPAddress", "LastModifiedByID", "LastModifiedDate", "MaxCompensationAmount", "NotifyBanksForInvoiceAfter", "OutgoingSMTPServer", "Password", "QualitativeCriteriaMaxScore", "SMTPPortNumber", "SMTPServerRequiresAuthentication", "TotalQuantitativeCriteriaMaxScore", "Username", "Weekend" },
+                values: new object[] { 107000000000001L, "C:\\PCPSAttachement", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 47, DateTimeKind.Local).AddTicks(5765), false, 0.0001m, null, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 47, DateTimeKind.Local).AddTicks(5832), 20000m, 90, null, null, 0m, 0, false, 70m, null, "0000110" });
+
+            migrationBuilder.InsertData(
+                table: "AttachmentTypeFileType",
+                columns: new[] { "ID", "AttachmentTypeID", "CreatedByID", "CreatedDate", "FileTypeID", "IPAddress", "LastModifiedByID", "LastModifiedDate" },
+                values: new object[] { 110100000000001L, 199000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 56, DateTimeKind.Local).AddTicks(9396), 198000000000001L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 56, DateTimeKind.Local).AddTicks(9452) });
 
             migrationBuilder.InsertData(
                 table: "GeneralLookupValue",
                 columns: new[] { "ID", "CreatedByID", "CreatedDate", "GeneralLookupTypeID", "IPAddress", "LastModifiedByID", "LastModifiedDate", "ValueAr", "ValueEn" },
-                values: new object[] { 106000000000001L, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8582), 105000000000001L, "127.0.0.1", 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 79, DateTimeKind.Local).AddTicks(8663), "آدمن رئيسي", "admin" });
+                values: new object[,]
+                {
+                    { 106000000000001L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9439), 105000000000001L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9502), "آدمن رئيسي", "admin" },
+                    { 107000000000002L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9563), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9567), "رئيسي", "Main" },
+                    { 107000000000003L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9571), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9574), "سلطة", "Salad" },
+                    { 107000000000004L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9577), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9580), "حلوى", "Sweet" },
+                    { 107000000000005L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9584), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9587), "مشروب", "Drink" },
+                    { 107000000000006L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9591), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9594), "خفيف", "Light" },
+                    { 107000000000007L, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9597), 105000000000002L, "127.0.0.1", 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 33, DateTimeKind.Local).AddTicks(9600), "ساندويش", "Sandwich" }
+                });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "ID", "Address", "AttachmentID", "CreatedByID", "CreatedDate", "Email", "HomePhone", "IPAddress", "IsActive", "LastModifiedByID", "LastModifiedDate", "LoginName", "Mobile", "NameAr", "NameEn", "Notes", "NumberOfWrongLogin", "Password", "PasswordActive", "PasswordPolicyID", "UserImageID", "UserTypeID" },
-                values: new object[] { 101000000000001L, "Ramallah", null, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3245), "Admin@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3330), "Admin", "0599999999", "مسؤول النظام", "Admin", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
+                values: new object[] { 101000000000001L, "Ramallah", null, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 29, DateTimeKind.Local).AddTicks(542), "Admin@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 29, DateTimeKind.Local).AddTicks(623), "Admin", "0599999999", "مسؤول النظام", "Admin", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "ID", "Address", "AttachmentID", "CreatedByID", "CreatedDate", "Email", "HomePhone", "IPAddress", "IsActive", "LastModifiedByID", "LastModifiedDate", "LoginName", "Mobile", "NameAr", "NameEn", "Notes", "NumberOfWrongLogin", "Password", "PasswordActive", "PasswordPolicyID", "UserImageID", "UserTypeID" },
-                values: new object[] { 101000000000002L, "Ramallah", null, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3552), "Ala@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 9, 25, 18, 36, 9, 72, DateTimeKind.Local).AddTicks(3565), "Ala", "0599999999", "علاء", "Ala", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
+                values: new object[] { 101000000000002L, "Ramallah", null, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 29, DateTimeKind.Local).AddTicks(883), "Ala@Gmail.com", "022965472", "127.0.0.1", true, 101000000000001L, new DateTime(2020, 11, 13, 23, 28, 12, 29, DateTimeKind.Local).AddTicks(889), "Ala", "0599999999", "علاء", "Ala", "Admin User of the system", 0L, "YgMhEvQnlflEL8BH8bJdIw==:::9CwV4SYQmQhYNpHuA9RL6pKNWlocxWw428/dRClVpjE=", false, 148000000000001L, null, 106000000000001L });
 
             migrationBuilder.InsertData(
                 table: "UserGroup",
@@ -399,6 +505,12 @@ namespace Sufrati_backEnd.API.Migrations
                 name: "IX_AttachmentTypeFileType_FileTypeID",
                 table: "AttachmentTypeFileType",
                 column: "FileTypeID");
+
+            migrationBuilder.CreateIndex(
+                name: "UX_FileType",
+                table: "FileType",
+                column: "FileExtension",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_GeneralLookupValue_GeneralLookupTypeID",
@@ -441,6 +553,12 @@ namespace Sufrati_backEnd.API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PasswordPolicy_ID",
                 table: "PasswordPolicy",
+                column: "ID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Recipe_ID",
+                table: "Recipe",
                 column: "ID",
                 unique: true);
 
@@ -497,7 +615,16 @@ namespace Sufrati_backEnd.API.Migrations
                 name: "AuditLog");
 
             migrationBuilder.DropTable(
+                name: "BankAccounts");
+
+            migrationBuilder.DropTable(
+                name: "Banks");
+
+            migrationBuilder.DropTable(
                 name: "MyNLog");
+
+            migrationBuilder.DropTable(
+                name: "Recipe");
 
             migrationBuilder.DropTable(
                 name: "SystemConstant");

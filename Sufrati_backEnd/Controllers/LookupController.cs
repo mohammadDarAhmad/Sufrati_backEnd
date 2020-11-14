@@ -101,6 +101,7 @@ namespace Sufrati_backEnd.API.Controllers
             return Ok(await _SufratiSupervisor.GetLookupInformation(id, ct));
         }
 
+      
         ///// <summary>
         ///// used to export Data To Excel File
         ///// </summary>

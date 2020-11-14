@@ -25,6 +25,9 @@ namespace Sufrati.Data
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<SystemConstant> SystemConstant { get; set; }
         public virtual DbSet<MyNLog> MyNLog { get; set; }
+        public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<BankAccount> BankAccounts { get; set; } 
+        public virtual DbSet<Recipe> Recipe { get; set; }
 
         #region Attachment
         public DbSet<AttachmentType> AttachmentType { get; set; }
@@ -50,6 +53,12 @@ namespace Sufrati.Data
             new GroupConfiguration(modelBuilder.Entity<Groups>());
             new AuditLogConfiguration(modelBuilder.Entity<AuditLog>());
             new NLogConfiguration(modelBuilder.Entity<MyNLog>());
+            new SystemConstantConfiguration(modelBuilder.Entity<SystemConstant>());
+            new AttachmentConfiguration(modelBuilder.Entity<Attachment>());
+            new AttachmentTypeConfiguration(modelBuilder.Entity<AttachmentType>());
+            new FileTypeConfiguration(modelBuilder.Entity<FileType>());
+            new AttachmentTypeFileTypeConfiguration(modelBuilder.Entity<AttachmentTypeFileType>());
+            new RecipeConfiguration(modelBuilder.Entity<Recipe>());
         }//new GeneralLookupTypeConfiguration(modelBuilder.Entity<GeneralLookupType>());
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
