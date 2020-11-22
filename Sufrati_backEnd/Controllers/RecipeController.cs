@@ -26,10 +26,25 @@ namespace Sufrati_backEnd.API.Controllers
             _SufratiSupervisor = sufratiSupervisor;
             _accessor = accessor;
         }
-        // GET: api/Recipe
+        // GET: api/Recipe/
+        [HttpGet("GetAllRecipe")]
+        [Produces(typeof(List<RecipeVM>))]
+        public async Task<IActionResult> GetAllRecipe(CancellationToken ct = default)
+        {
+            return Ok(await _SufratiSupervisor.GetAllRecipe(ct));
+        }
+
+        // GET: api/Recipe/5
+        [HttpGet("{id}", Name = "GetRecipe")]
+        [Produces(typeof(RecipeVM))]
+        public async Task<IActionResult> Get(long id, CancellationToken ct = default)
+        {
+            return Ok(await _SufratiSupervisor.GetRecipeByID(id, ct));
+        }
+        // Post: api/Recipe/Add
         [HttpPost]
 
-        public async Task<IActionResult> Add(RecipeVM recipe, CancellationToken ct = default)
+        public async Task<IActionResult> Post(RecipeVM recipe, CancellationToken ct = default)
         {
 
            if( await _SufratiSupervisor.AddRecipe(recipe, _accessor, User, ct))
@@ -37,7 +52,32 @@ namespace Sufrati_backEnd.API.Controllers
                 return StatusCode(201);
             }
             return StatusCode(400);
+        }   // PUT: api/Recipe/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(long id, [FromBody] RecipeVM userVM, CancellationToken ct = default)
+        {
+
+          await _SufratiSupervisor.UpdateRecipe(userVM, _accessor, User, ct);
+         
+            return NoContent();
         }
+
+        // DELETE: api/Recipe/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id, CancellationToken ct = default)
+        {
+            
+            var isDeleted = await _SufratiSupervisor.DeleteRecipe(id, ct);
+            if (isDeleted)
+            {
+                return NoContent();
+
+            }
+            return BadRequest();//statuse code 400
+        }
+
+
     }
+
 
 }

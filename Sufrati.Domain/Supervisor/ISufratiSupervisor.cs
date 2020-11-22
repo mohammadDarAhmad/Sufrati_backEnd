@@ -91,6 +91,11 @@ namespace Sufrati.Domain.Supervisor
         #endregion
         #region Recipe
         Task<bool> AddRecipe(RecipeVM recipe, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        Task<List<RecipeVM>> GetAllRecipe(CancellationToken ct = default);
+        Task<RecipeVM> GetRecipeByID(long id, CancellationToken ct = default);
+        Task<bool> UpdateRecipe(RecipeVM recipeVM, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct = default);
+        Task<bool> DeleteRecipe(long id, CancellationToken ct = default);
+
         #endregion
     }
 }

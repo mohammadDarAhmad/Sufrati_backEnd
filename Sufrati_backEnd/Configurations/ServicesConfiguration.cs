@@ -10,6 +10,7 @@ using Sufrati.Data.Configurations;
 using Sufrati.Domain.Supervisor;
 using Sufrati.Domain.Repositories;
 using Sufrati.Data.Repositories;
+using System.Collections.Generic;
 
 namespace Sufrati_backEnd.API.Configurations
 {
@@ -72,6 +73,7 @@ namespace Sufrati_backEnd.API.Configurations
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVMForView>().ReverseMap();
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVM>().ReverseMap();
                 cfg.CreateMap<Recipe, RecipeVM>().ReverseMap();
+                cfg.CreateMap<RecipeVM, Recipe>().ReverseMap();
                 cfg.CreateMap<Attachment, AttachmentVM>().ReverseMap();
               
 

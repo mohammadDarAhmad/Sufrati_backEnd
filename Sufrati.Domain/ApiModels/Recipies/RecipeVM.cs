@@ -7,6 +7,7 @@ namespace Sufrati.Domain.ApiModels
     public class RecipeVM
     {
 
+        public string ID { get; set; }
         public string UserID { get; set; }
 
 
