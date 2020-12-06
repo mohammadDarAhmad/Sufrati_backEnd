@@ -73,7 +73,8 @@ namespace Sufrati_backEnd.API.Configurations
                 cfg.CreateMap<PasswordPolicy, PasswordPolicyVM>().ReverseMap();
                 cfg.CreateMap<Recipe, RecipeVM>().ReverseMap();
                 cfg.CreateMap<Attachment, AttachmentVM>().ReverseMap();
-              
+                cfg.CreateMap<FileType, FileTypeModel>().ReverseMap();
+
 
             });
             var mapper = config.CreateMapper();
