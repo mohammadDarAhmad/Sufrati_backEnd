@@ -38,6 +38,13 @@ namespace Sufrati_backEnd.API.Controllers
         {
             return Ok(await _SufratiSupervisor.GetGeneralLookupsVM(ct));
         }
+        [HttpGet("GetLookupValueByTypeId/{id}")]
+        [Produces(typeof(GeneralLookupsVM))]
+        public async Task<IActionResult> GetLookupValueByTypeId(long id ,CancellationToken ct = default)
+        {
+            return Ok(await _SufratiSupervisor.GetLookupValueByTypeId(id,ct));
+        }
+       
 
         /// <summary>
         /// used to Get Lookup by id

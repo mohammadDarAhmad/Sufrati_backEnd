@@ -52,6 +52,7 @@ namespace Sufrati.Domain.Supervisor
         #region GeneralLookups
         Task<GeneralLookupValueForView> GetLookupValue(long id, CancellationToken ct = default);
         Task<GeneralLookupsVM> GetGeneralLookupsVM(CancellationToken ct);
+        Task<GeneralLookupsVM> GetLookupValueByTypeId(long id, CancellationToken ct);
         Task<GeneralLookupValueVM> AddGeneralLookup(GeneralLookupValueVM input, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct);
         Task<GeneralLookupValueForView> UpdateGeneralLookupAsync(GeneralLookupValueVM input, IHttpContextAccessor accessor, ClaimsPrincipal user, CancellationToken ct);
         Task DeleteGeneralLookupAsync(long id, CancellationToken ct);

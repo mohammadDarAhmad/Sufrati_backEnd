@@ -41,6 +41,21 @@ namespace Sufrati.Domain.Supervisor
             return result;
 
         }
+
+        public async Task<GeneralLookupsVM> GetLookupValueByTypeId(long id,CancellationToken ct)
+
+        {
+            var allLookupValue = await _LookupRepository.GetLookupValueByTypeId(id, ct);
+
+            var allLookupType = await _LookupRepository.GetAllLookupType(ct);
+            var result = new GeneralLookupsVM
+            {
+                GeneralLookupTypesVM = _Mapper.Map<List<GeneralLookupTypeVM>>(allLookupType),
+                GeneralLookupValuesVM = _Mapper.Map<List<GeneralLookupValueForView>>(allLookupValue)
+            };
+            return result;
+
+        }
         public async Task<GeneralLookupValueForView> GetClassificationByCategory(CancellationToken ct)
 
         {
