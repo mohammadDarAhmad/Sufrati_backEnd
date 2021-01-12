@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sufrati.Data;
 
 namespace Sufrati_backEnd.API.Migrations
 {
     [DbContext(typeof(SufratiContext))]
-    partial class SufratiContextModelSnapshot : ModelSnapshot
+    [Migration("20210102113257_444")]
+    partial class _444
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

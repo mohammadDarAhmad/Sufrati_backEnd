@@ -34,6 +34,8 @@ namespace Sufrati.Domain.ApiModels
         public string ClassificationClassification { get; set; }
 
         public string classificationInternational { get; set; }
+        public string ClassificationSufrati { get; set; }
+
     }
 }
 

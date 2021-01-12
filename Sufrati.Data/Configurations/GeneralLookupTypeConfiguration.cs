@@ -12,7 +12,9 @@ namespace Sufrati.Data.Configurations
 
             entity.HasData(
               new GeneralLookupType() { ID = 105000000000001, GeneralLookupNameEn = "User Type", GeneralLookupNameAr = "نوع المستخدم" },
-              new GeneralLookupType() { ID = 105000000000002, GeneralLookupNameEn = "Classification by category", GeneralLookupNameAr = "تنصصيف حسب الاصناف" }
+              new GeneralLookupType() { ID = 105000000000002, GeneralLookupNameEn = "Classification by category", GeneralLookupNameAr = "تصنيف حسب الاصناف" },
+              new GeneralLookupType() { ID = 105000000000003, GeneralLookupNameEn = "Classification by Country", GeneralLookupNameAr = "تصنيف حسب البلد" },
+              new GeneralLookupType() { ID = 105000000000004, GeneralLookupNameEn = "Classification by Sufrati Website", GeneralLookupNameAr = "تصنيف سفرتي" }
        );
 
         }

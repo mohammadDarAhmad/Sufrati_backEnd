@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sufrati.Data;
 
 namespace Sufrati_backEnd.API.Migrations
 {
     [DbContext(typeof(SufratiContext))]
-    partial class SufratiContextModelSnapshot : ModelSnapshot
+    [Migration("20201228210510_287")]
+    partial class _287
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,11 +62,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 160000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 669, DateTimeKind.Local).AddTicks(6398),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 165, DateTimeKind.Local).AddTicks(9733),
                             FilePath = "00",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 669, DateTimeKind.Local).AddTicks(6481),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 165, DateTimeKind.Local).AddTicks(9800),
                             OriginalFileName = "File1",
                             PhysicalFileName = "Filefile"
                         });
@@ -115,10 +117,10 @@ namespace Sufrati_backEnd.API.Migrations
                             AttachmentDescAr = "عربي",
                             AttachmentDescEn = "eng",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 671, DateTimeKind.Local).AddTicks(3713),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 166, DateTimeKind.Local).AddTicks(8853),
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 671, DateTimeKind.Local).AddTicks(3847),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 166, DateTimeKind.Local).AddTicks(8923),
                             MaxSize = 10m
                         },
                         new
@@ -127,10 +129,10 @@ namespace Sufrati_backEnd.API.Migrations
                             AttachmentDescAr = "عربي",
                             AttachmentDescEn = "eng",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 671, DateTimeKind.Local).AddTicks(3938),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 166, DateTimeKind.Local).AddTicks(9003),
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 671, DateTimeKind.Local).AddTicks(3946),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 166, DateTimeKind.Local).AddTicks(9011),
                             MaxSize = 10m
                         });
                 });
@@ -178,11 +180,11 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 110100000000001L,
                             AttachmentTypeID = 199000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 704, DateTimeKind.Local).AddTicks(8888),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 178, DateTimeKind.Local).AddTicks(412),
                             FileTypeID = 198000000000001L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 704, DateTimeKind.Local).AddTicks(8968)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 178, DateTimeKind.Local).AddTicks(488)
                         });
                 });
 
@@ -310,81 +312,81 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 198000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2240),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8621),
                             FileExtension = ".jpeg",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2325)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8703)
                         },
                         new
                         {
                             ID = 198000000000002L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2379),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8771),
                             FileExtension = ".pdf",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2385)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8787)
                         },
                         new
                         {
                             ID = 198000000000003L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2391),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8802),
                             FileExtension = ".rar",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2396)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8813)
                         },
                         new
                         {
                             ID = 198000000000004L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2400),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8830),
                             FileExtension = ".xls",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2405)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8836)
                         },
                         new
                         {
                             ID = 198000000000005L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2513),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8840),
                             FileExtension = ".xlsx",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2519)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8845)
                         },
                         new
                         {
                             ID = 198000000000006L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2525),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8850),
                             FileExtension = ".docx",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2530)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8854)
                         },
                         new
                         {
                             ID = 198000000000007L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2535),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8860),
                             FileExtension = ".doc",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2541)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8866)
                         },
                         new
                         {
                             ID = 198000000000008L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2547),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8871),
                             FileExtension = ".png",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 676, DateTimeKind.Local).AddTicks(2553)
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 171, DateTimeKind.Local).AddTicks(8876)
                         });
                 });
 
@@ -417,20 +419,14 @@ namespace Sufrati_backEnd.API.Migrations
                         new
                         {
                             ID = 105000000000002L,
-                            GeneralLookupNameAr = "تصنيف حسب الاصناف",
+                            GeneralLookupNameAr = "تنصصيف حسب الاصناف",
                             GeneralLookupNameEn = "Classification by category"
                         },
                         new
                         {
                             ID = 105000000000003L,
-                            GeneralLookupNameAr = "تصنيف حسب البلد",
+                            GeneralLookupNameAr = "تنصصيف حسب البلد",
                             GeneralLookupNameEn = "Classification by Country"
-                        },
-                        new
-                        {
-                            ID = 105000000000004L,
-                            GeneralLookupNameAr = "تصنيف سفرتي",
-                            GeneralLookupNameEn = "Classification by Sufrati Website"
                         });
                 });
 
@@ -478,11 +474,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 106000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(373),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8403),
                             GeneralLookupTypeID = 105000000000001L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(449),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8474),
                             ValueAr = "آدمن رئيسي",
                             ValueEn = "admin"
                         },
@@ -490,11 +486,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000002L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(573),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8538),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(589),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8541),
                             ValueAr = "رئيسي",
                             ValueEn = "Main"
                         },
@@ -502,11 +498,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000003L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(597),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8546),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(609),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8549),
                             ValueAr = "سلطة",
                             ValueEn = "Salad"
                         },
@@ -514,11 +510,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000004L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(625),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8553),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(640),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8556),
                             ValueAr = "حلوى",
                             ValueEn = "Sweet"
                         },
@@ -526,11 +522,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000005L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(655),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8560),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(669),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8563),
                             ValueAr = "مشروب",
                             ValueEn = "Drink"
                         },
@@ -538,11 +534,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000006L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(685),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8566),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(700),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8569),
                             ValueAr = "خفيف",
                             ValueEn = "Light"
                         },
@@ -550,11 +546,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000007L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(716),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8573),
                             GeneralLookupTypeID = 105000000000002L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(730),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8576),
                             ValueAr = "ساندويش",
                             ValueEn = "Sandwich"
                         },
@@ -562,11 +558,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000008L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(746),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8579),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(760),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8582),
                             ValueAr = "فلسطيني",
                             ValueEn = "Palestaine"
                         },
@@ -574,11 +570,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000009L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(775),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8586),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(780),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8589),
                             ValueAr = "الجزائر",
                             ValueEn = "Algeria"
                         },
@@ -586,11 +582,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000010L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(787),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8592),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(793),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8595),
                             ValueAr = "سوريا",
                             ValueEn = "Syrian"
                         },
@@ -598,11 +594,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000011L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(799),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8612),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(805),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8615),
                             ValueAr = "تونس",
                             ValueEn = "Tonsia"
                         },
@@ -610,11 +606,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000012L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(812),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8618),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(817),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8622),
                             ValueAr = "اليمن",
                             ValueEn = "Yaman"
                         },
@@ -622,11 +618,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000013L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(824),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8625),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(829),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8628),
                             ValueAr = "السعودية",
                             ValueEn = "Soudia"
                         },
@@ -634,11 +630,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000014L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(835),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8631),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(846),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8634),
                             ValueAr = "لبنان",
                             ValueEn = "Lebaone"
                         },
@@ -646,11 +642,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000015L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(861),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8638),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(876),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8641),
                             ValueAr = "الاردن",
                             ValueEn = "Jordan"
                         },
@@ -658,11 +654,11 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000016L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(888),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8644),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(893),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8647),
                             ValueAr = "المغرب",
                             ValueEn = "Morracow"
                         },
@@ -670,85 +666,13 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 107000000000018L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(899),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8651),
                             GeneralLookupTypeID = 105000000000003L,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(905),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 143, DateTimeKind.Local).AddTicks(8654),
                             ValueAr = "مصر",
                             ValueEn = "Eygpt"
-                        },
-                        new
-                        {
-                            ID = 107000000000019L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(911),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(916),
-                            ValueAr = "لبنيات",
-                            ValueEn = "Laben"
-                        },
-                        new
-                        {
-                            ID = 107000000000020L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(923),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(928),
-                            ValueAr = "ارزيات",
-                            ValueEn = "Raise"
-                        },
-                        new
-                        {
-                            ID = 107000000000021L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(938),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(953),
-                            ValueAr = "يخنيات",
-                            ValueEn = "yaken"
-                        },
-                        new
-                        {
-                            ID = 107000000000022L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(968),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(976),
-                            ValueAr = "قبب",
-                            ValueEn = "kbb"
-                        },
-                        new
-                        {
-                            ID = 107000000000023L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(984),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(990),
-                            ValueAr = "ورقيات",
-                            ValueEn = "workss"
-                        },
-                        new
-                        {
-                            ID = 107000000000024L,
-                            CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(997),
-                            GeneralLookupTypeID = 105000000000004L,
-                            IPAddress = "127.0.0.1",
-                            LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 598, DateTimeKind.Local).AddTicks(1003),
-                            ValueAr = "عدسيات",
-                            ValueEn = "3ds"
                         });
                 });
 
@@ -807,12 +731,12 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 147000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 602, DateTimeKind.Local).AddTicks(3038),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 146, DateTimeKind.Local).AddTicks(5598),
                             DescriptionAr = "هذه المجموعة للمسؤولين الرئيسين",
                             DescriptionEn = "this group for Admins",
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 602, DateTimeKind.Local).AddTicks(3125),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 146, DateTimeKind.Local).AddTicks(5676),
                             NameAr = "أدمن",
                             NameEn = "Admins"
                         });
@@ -943,14 +867,14 @@ namespace Sufrati_backEnd.API.Migrations
                         {
                             ID = 148000000000001L,
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 529, DateTimeKind.Local).AddTicks(2633),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 119, DateTimeKind.Local).AddTicks(6500),
                             FirstLoginChangePassword = true,
                             IPAddress = "127.0.0.1",
                             IncludeCharacter = true,
                             IncludeNumeric = true,
                             IncludeSpecialCharacter = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 534, DateTimeKind.Local).AddTicks(5199),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 123, DateTimeKind.Local).AddTicks(5378),
                             MinLength = 6,
                             SessionAfterEnd = 60,
                             SuspendPasswordAfter = 5,
@@ -967,9 +891,6 @@ namespace Sufrati_backEnd.API.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClassificationClassification")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClassificationSufrati")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("CreatedByID")
@@ -1106,12 +1027,12 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 107000000000001L,
                             AttachmentPath = "C:\\SufratiAttachment",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 667, DateTimeKind.Local).AddTicks(8428),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 165, DateTimeKind.Local).AddTicks(1835),
                             EnableSSL = false,
                             FinesAmountPerEachDayDelayed = 0.0001m,
                             IPAddress = "127.0.0.1",
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 667, DateTimeKind.Local).AddTicks(8509),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 165, DateTimeKind.Local).AddTicks(1922),
                             MaxCompensationAmount = 20000m,
                             NotifyBanksForInvoiceAfter = 90,
                             QualitativeCriteriaMaxScore = 0m,
@@ -1224,13 +1145,13 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 101000000000001L,
                             Address = "Ramallah",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 585, DateTimeKind.Local).AddTicks(2102),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 137, DateTimeKind.Local).AddTicks(9830),
                             Email = "Admin@Gmail.com",
                             HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 585, DateTimeKind.Local).AddTicks(2195),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 137, DateTimeKind.Local).AddTicks(9905),
                             LoginName = "Admin",
                             Mobile = "0599999999",
                             NameAr = "مسؤول النظام",
@@ -1247,13 +1168,13 @@ namespace Sufrati_backEnd.API.Migrations
                             ID = 101000000000002L,
                             Address = "Ramallah",
                             CreatedByID = 101000000000001L,
-                            CreatedDate = new DateTime(2021, 1, 2, 13, 32, 54, 585, DateTimeKind.Local).AddTicks(2430),
+                            CreatedDate = new DateTime(2020, 12, 28, 23, 5, 9, 138, DateTimeKind.Local).AddTicks(45),
                             Email = "Ala@Gmail.com",
                             HomePhone = "022965472",
                             IPAddress = "127.0.0.1",
                             IsActive = true,
                             LastModifiedByID = 101000000000001L,
-                            LastModifiedDate = new DateTime(2021, 1, 2, 13, 32, 54, 585, DateTimeKind.Local).AddTicks(2441),
+                            LastModifiedDate = new DateTime(2020, 12, 28, 23, 5, 9, 138, DateTimeKind.Local).AddTicks(49),
                             LoginName = "Ala",
                             Mobile = "0599999999",
                             NameAr = "علاء",
